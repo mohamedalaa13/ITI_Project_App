@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: nodejs-iti
 spec:
   selector:
     matchLabels:
-      run: my-nginx
+      run: nodejs-iti
   replicas: 2
   template:
     metadata:
       labels:
-        run: my-nginx
+        run: nodejs-iti
     spec:
       containers:
-      - name: my-nginx
+      - name: nodejs-iti
         image: 139646/jenkins-nodejs-test
         ports:
         - containerPort: 3000
@@ -21,14 +21,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-nginx
+  name: nodejs-iti
   labels:
-    run: my-nginx
+    run: nodejs-iti
 spec:
   ports:
   - port: 3000
     protocol: TCP
   selector:
-    run: my-nginx
-
-        
+    run: nodejs-iti
